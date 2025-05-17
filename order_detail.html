@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Order Details #{{ order.id }}</h2>
+<p>Date: {{ order.order_date|date:"F j, Y" }}</p>
+<p>Status: {{ order.order_status }}</p>
+<p>Shipping Address: {{ order.shipping_address }}</p>
+
+<!-- Display order details -->
+{% include 'home/_order_details.html' %}
+{% endblock %}

@@ -1,0 +1,162 @@
+<div class="order-history-container">
+    {% for entry in history_data %}
+    <div class="order-card">
+        <div class="order-header">
+            <span class="order-id">Order #{{ entry.order.id }}</span>
+            <span class="order-date">{{ entry.order.created_at|date:"F j, Y" }}</span>
+        </div>
+        
+        <div class="order-items">
+            <div class="items-header">
+                <span class="product-col">Product</span>
+                <span class="quantity-col">Quantity</span>
+                <span class="price-col">Price</span>
+                <span class="total-col">Total</span>
+            </div>
+            
+            {% for item in entry.items %}
+            <div class="order-item">
+                <span class="product-col">{{ item.product.name }}</span>
+                <span class="quantity-col">{{ item.quantity }}</span>
+                <span class="price-col">${{ item.product.current_price|floatformat:2 }}</span>
+                <span class="total-col">${{ item.subtotal|floatformat:2 }}</span>
+            </div>
+            {% endfor %}
+            
+            <div class="order-total">
+                <span>Order Total:</span>
+                <span class="total-amount">${{ entry.order.total_price|floatformat:2 }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .order-history-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .order-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    
+    .order-header {
+        background-color: #f8f0f0;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .order-id {
+        font-weight: 600;
+        color: #D4A5A5;
+        font-size: 16px;
+    }
+    
+    .order-date {
+        color: #777;
+        font-size: 14px;
+    }
+    
+    .order-items {
+        padding: 0 20px;
+    }
+    
+    .items-header {
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .order-item {
+        display: flex;
+        padding: 12px 0;
+        border-bottom: 1px dashed #f0f0f0;
+        align-items: center;
+    }
+    
+    .product-col {
+        flex: 2;
+        color: #333;
+    }
+    
+    .quantity-col {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .price-col {
+        flex: 1;
+        text-align: right;
+    }
+    
+    .total-col {
+        flex: 1;
+        text-align: right;
+        font-weight: 500;
+    }
+    
+    .order-total {
+        display: flex;
+        justify-content: flex-end;
+        padding: 15px 0;
+        margin-top: 10px;
+        border-top: 2px solid #f0f0f0;
+    }
+    
+    .total-amount {
+        font-weight: 600;
+        color: #D4A5A5;
+        margin-left: 15px;
+        min-width: 100px;
+        text-align: right;
+    }
+    
+    @media (max-width: 768px) {
+        .items-header {
+            display: none;
+        }
+        
+        .order-item {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 15px 0;
+            gap: 5px;
+        }
+        
+        .product-col,
+        .quantity-col,
+        .price-col,
+        .total-col {
+            flex: none;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .quantity-col::before {
+            content: "Quantity: ";
+            color: #777;
+        }
+        
+        .price-col::before {
+            content: "Price: ";
+            color: #777;
+        }
+        
+        .total-col::before {
+            content: "Total: ";
+            color: #777;
+        }
+    }
+</style>

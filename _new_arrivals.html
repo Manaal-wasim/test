@@ -1,0 +1,23 @@
+{% load static %}
+<section style="padding: 60px 5%; text-align: center;">
+    <h2 style="margin-bottom: 40px;">NEW ARRIVALS</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+        <!-- Product Placeholders -->
+        <div class="product-card">
+            <img src="{% static 'images/products/prod1.jpg' %}" alt="Heels" style="width: 100%;">
+            <h3>Heels</h3>
+            <p>$295</p>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'images/products/prod2.jpg' %}" alt="Sandals" style="width: 100%;">
+            <h3>Sandals</h3>
+            <p>$185</p>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'images/products/prod3.jpg' %}" alt="Pumps" style="width: 100%;">
+            <h3>Pumps</h3>
+            <p>$220</p>
+        </div>
+        
+    </div>
+</section>

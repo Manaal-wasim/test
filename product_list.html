@@ -1,0 +1,13 @@
+<h1>All Products</h1>
+<div style="display: flex; flex-wrap: wrap;">
+  {% for product in products %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+      <h3>{{ product.name }}</h3>
+      <p>${{ product.price }}</p>
+      {% if product.image %}
+        <img src="{{ product.image.url }}" style="max-width: 200px;" />
+      {% endif %}
+      <!-- <a href="{% url 'product_detail' product.id %}">View Product</a> -->
+    </div>
+  {% endfor %}
+</div>

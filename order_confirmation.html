@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Confirmation | Sole Haven{% endblock %}
+
+{% block content %}
+<div class="confirmation-wrapper">
+    <div class="confirmation-container">
+        <!-- Confirmation Header -->
+        <div class="confirmation-header">
+            <h2 class="confirmation-title">Your Order Is Confirmed</h2>
+            <p class="confirmation-subtitle">Thank you for choosing Sole Haven</p>
+            <div class="order-number">Order #{{ order.id }}</div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="order-details">
+            {% include 'home/_order_details.html' %}
+        </div>
+
+        <!-- Continue Shopping -->
+        <div class="action-button">
+            <a href="{% url 'luxury-gallery' %}" class="btn-continue">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Main Wrapper - centers the content */
+    .confirmation-wrapper {
+        margin-left: 220px;
+        padding: 20px 20px 0 20px;
+        /* min-height: 100vh;
+        display: flex; */
+        align-items: center;
+        justify-content: center; 
+    }
+
+    /* Compact Container */
+    .confirmation-container {
+        width: 100%;
+        max-width: 500px; /* More compact width */
+        margin: 0 auto;
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Header */
+    .confirmation-header {
+        margin-bottom: 15px;
+    }
+
+    .confirmation-title {
+        color: #D4A5A5;
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .confirmation-subtitle {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .order-number {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* Order Details */
+    .order-details {
+        margin: 20px 0;
+        text-align: right;
+    }
+
+    /* Button */
+    .action-button {
+        margin-top: 20px;
+    }
+
+    .btn-continue {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #D4A5A5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-continue:hover {
+        background-color: #B38B8B;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .confirmation-wrapper {
+            margin-left: 0;
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock %}

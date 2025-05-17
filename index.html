@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | Sole Haven{% endblock %}
+
+{% block content %}
+    {% include 'home/sections/_hero.html' %}
+    {% include 'home/sections/_new_arrivals.html' %}
+    {% include 'home/sections/_about.html' %}
+{% endblock %}
